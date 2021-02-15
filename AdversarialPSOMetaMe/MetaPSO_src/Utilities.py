@@ -1,5 +1,7 @@
 from math import exp
 import numpy as np
+from secml.array import CArray
+from secml_malware.models.c_classifier_end2end_malware import End2EndModel
 
 def nLargestValues(lst,stepSize):
     n=sorted(range(len(lst)), key=lambda i: lst[i])[-1*stepSize:]
@@ -62,10 +64,14 @@ def bytez_to_numpy(bytez,maxlen):
     b[:len(bytez)] = bytez
     return b
     
-def get_probs(model,x):
-    _, maxlen, embedding_size = model.layers[1].output_shape
-    test_p = model.predict(np.asarray([bytez_to_numpy(x,maxlen)])) 
-    return test_p[0][0]
+def get_probs(net,x):
+    #_, maxlen, embedding_size = model.layers[1].output_shape
+    #test_p = model.predict(np.asarray([bytez_to_numpy(x,maxlen)])) 
+    #return test_p[0][0]
+    x = End2EndModel.bytes_to_numpy(x, net.get_input_max_length(), 256, False)
+    _, confidence = net.predict(CArray(x), True)
+    conf = confidence[1][0].item()
+    return conf
 
 def fitnessScore(x,targetModel,baselineConfidence):
     proba=get_probs(targetModel,x)
