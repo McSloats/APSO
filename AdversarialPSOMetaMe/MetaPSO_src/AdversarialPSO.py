@@ -34,7 +34,6 @@ C1=1
 C2=1
 
 def logPSOOutput():
-    failed = open("Failed_files.txt","w")
     if not inputDir==None:
         samples=readSamples(inp=inputDir)
     else:
@@ -46,14 +45,14 @@ def logPSOOutput():
         sample=readSample(samplePath)
         print(samplePath)
         length=(len(sample))
-        try:
-            swarm=Swarm(numOfParticles,randomMutations,maxQueries,sample,C1,C2,earlyTermination)
-        except:
-            print("\n############################################\n")
-            print("Radare2 failed to analyze sample %s. Skipping...\n" %(samplePath))
-            print("\n############################################\n")
-            failed.write(str(samplePath)+" - Failed to analyze \n")
-            continue
+        #try:
+        swarm=Swarm(numOfParticles,randomMutations,maxQueries,sample,C1,C2,earlyTermination)
+        #except:
+        #    print("\n############################################\n")
+        #    print("Radare2 failed to analyze sample %s. Skipping...\n" %(samplePath))
+        #    print("\n############################################\n")
+        #    failed.write(str(samplePath)+" - Failed to analyze \n")
+        #    continue
         try:
             numberOfPotentialMappings=len(swarm.replacements)
             baselineConfidence=swarm.calculateBaselineConfidence()
@@ -77,10 +76,10 @@ def logPSOOutput():
             with open('Malware_Samples_PSO_Results.csv','a') as f:
                 f.write('%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n'%(samplePath,str(length),str(numberOfPotentialMappings),str(baselineConfidence),str(1-baselineConfidence),str(0 if baselineConfidence < 0.5 else 1),str(modelConfidence),str(swarm.bestFitness),str(predAfter),str(iterations),str(numberOfChanges),str(numberOfQueries)))
             i=i+1
-            os.system("mv "+str(samplePath)+" dataset-2k/done")
+            os.system("mv "+str(samplePath)+" dataset/tested")
         except:
             failed.write(str(samplePath)+" - Number of Potential Changes "+str(numberOfPotentialMappings)+" \n")
-            os.system("mv "+str(samplePath)+" dataset-2k/fail")
+            os.system("mv "+str(samplePath)+" dataset/failed")
             
 def testModel():
     if not inputDir==None:
