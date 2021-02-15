@@ -18,7 +18,7 @@ class Swarm:
         self.targetModel=loadSurrogate()
         self.bestFitness=0
         #_,self.dLength,_ = self.targetModel.layers[1].output_shape
-        self.dLength,_ = 2**20#self.targetModel.layers[1].output_shape
+        self.dLength = 2**20
         self.numberOfQueries=0
         self.bestPosition=[255]*self.dLength
         self.randomMutation=randomMutation
