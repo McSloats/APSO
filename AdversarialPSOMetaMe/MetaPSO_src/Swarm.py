@@ -16,8 +16,9 @@ class Swarm:
     def __init__(self,numOfParticles,randomMutation,maxQueries,x,C1,C2,e):
         self.numberOfParticles=numOfParticles
         self.targetModel=loadSurrogate()
-        _,self.dLength,_ = 2**20#self.targetModel.layers[1].output_shape
         self.bestFitness=0
+        #_,self.dLength,_ = self.targetModel.layers[1].output_shape
+        self.dLength,_ = 2**20#self.targetModel.layers[1].output_shape
         self.numberOfQueries=0
         self.bestPosition=[255]*self.dLength
         self.randomMutation=randomMutation
