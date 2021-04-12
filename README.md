@@ -22,18 +22,15 @@ git checkout APSOMod
 ```
 
 ### PIP Installs
+The *requirements* are for PSO and *secml_malware* is for the Secml Malware library.
 ```
 pip3 install -U setuptools
 pip3 install keystone-engine
 pip3 install torch
 pip3 install torchvision
 pip3 install -r requirements
-```
-> These are the PSO requirements.
-```
 pip3 install -r secml_malware/requirements.txt
 ```
-> These are the secml_malware library requirements.
 
 ### Ember Installation
 ```
@@ -41,7 +38,7 @@ pip3 install git+https://github.com/elastic/ember.git
 ```
 
 ### Setup Dataset
-Put the malware files into the APSO/dataset/untested directory
+Put the malware files into the APSO/dataset/untested/ directory.
 
 ## Run the Attack
 The out file is a tmp and not needed. The "-o out" is not functional, but needed to run for PSO.
