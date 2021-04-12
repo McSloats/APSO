@@ -45,14 +45,13 @@ def logPSOOutput():
         sample=readSample(samplePath)
         print(samplePath)
         length=(len(sample))
-        #try:
-        swarm=Swarm(numOfParticles,randomMutations,maxQueries,sample,C1,C2,earlyTermination)
-        #except:
-        #    print("\n############################################\n")
-        #    print("Radare2 failed to analyze sample %s. Skipping...\n" %(samplePath))
-        #    print("\n############################################\n")
-        #    failed.write(str(samplePath)+" - Failed to analyze \n")
-        #    continue
+        try:
+            swarm=Swarm(numOfParticles,randomMutations,maxQueries,sample,C1,C2,earlyTermination)
+        except:
+            print("\n############################################\n")
+            print("Radare2 failed to analyze sample %s. Skipping...\n" %(samplePath))
+            print("\n############################################\n")
+            continue
         try:
             numberOfPotentialMappings=len(swarm.replacements)
             baselineConfidence=swarm.calculateBaselineConfidence()
@@ -78,7 +77,6 @@ def logPSOOutput():
             i=i+1
             os.system("mv "+str(samplePath)+" dataset/tested")
         except:
-            failed.write(str(samplePath)+" - Number of Potential Changes "+str(numberOfPotentialMappings)+" \n")
             os.system("mv "+str(samplePath)+" dataset/failed")
             
 def testModel():
