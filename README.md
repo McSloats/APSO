@@ -9,7 +9,7 @@ Programming Language - Python3.8.5
 
 ### Pre-requisite Installation Instructions
 Download needed packages
-"sudo apt-get install python3-pip cmake radare2 git"
+*sudo apt-get install python3-pip cmake radare2 git*
 
 ### Download Git files
 git clone https://github.com/McSloats/APSO.git
