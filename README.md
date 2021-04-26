@@ -50,10 +50,3 @@ The out file is a tmp and not needed. The "-o out" is not functional, but needed
 ```
 python3 AdversarialPSO.py -i dataset/untested/ -o out
 ```
-=======
-# APSO
-Adversarial attack with Particle Swarm Optimization.
-
-#### This version may not be up to date...
-
-#### Use 'git checkout APSOMod' to get to the working version.
