@@ -37,7 +37,13 @@ pip3 install git+https://github.com/elastic/ember.git
 ```
 
 #### 6. Setup Dataset
-Put the malware files into the APSO/dataset/untested/ directory.
+```
+mkdir dataset
+mkdir dataset/failed
+mkdir dataset/untested
+mkdir dataset/tested
+```
+Add the dataset to the *untested* directory.
 
 ## Run the Attack
 The out file is a tmp and not needed. The "-o out" is not functional, but needed to run for PSO.
