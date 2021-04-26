@@ -1,5 +1,5 @@
-# APSO modified version
-This repository is a modified version to work with the secml_malware model.
+# APSO
+This is an adversarial example attack against the Malconv malware detection model. Malware is changed using a modified version of the metamorphic engine that makes instruction replacements found publicly at *https://github.com/a0rtega/metame*. Particle Swarm Optimization is used to make intelligent changes to the malware executable instructions based on the output confidence of the model.
 
 ## Installation Instructions
 #### 1. Pre-requisite Information
