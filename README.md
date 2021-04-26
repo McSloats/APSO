@@ -36,7 +36,7 @@ pip3 install -r secml_malware/requirements.txt
 pip3 install git+https://github.com/elastic/ember.git
 ```
 
-#### 6. Setup Dataset
+#### 6. Dataset Setup
 ```
 mkdir dataset
 mkdir dataset/failed
@@ -46,7 +46,7 @@ mkdir dataset/tested
 Add the dataset to the *untested* directory.
 
 ## Run the Attack
-The out file is a tmp and not needed. The "-o out" is not functional, but needed to run for PSO.
+The "-i" is the input directory where the malware samples should exist. In the case of the *Dataset Setup* steps, they should be located in "-i dataset/untested". The "-o out" is not functional, but needed to run for PSO.
 ```
 python3 AdversarialPSO.py -i dataset/untested/ -o out
 ```
